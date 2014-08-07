@@ -1,0 +1,4 @@
+go-recodesign
+=============
+
+resign ipa
