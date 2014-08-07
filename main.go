@@ -16,18 +16,15 @@ var Flags = []cli.Flag{
 }
 var flagIpa = cli.StringFlag{
 	Name:  "ipa, i",
-	Value: "./xxxxx.ipa",
 	Usage: "ipa path for resigning",
 }
 var flagProvision = cli.StringFlag{
 	Name:  "provision, p",
-	Value: "./xxxxx.mobileprovision",
 	Usage: "provision path for resigning",
 }
 var flagSign = cli.StringFlag{
 	Name:  "sign, s",
-	Value: "iPhone Distribution: XXXXX XXXXX (XXXXXXXXXX)",
-	Usage: "codesign for resigning # security find-identity -p codesigning -v",
+	Usage: "codesign for resigning (e.g. 'iPhone Distribution: XXXXX XXXXX (XXXXXXXXXX)')# security find-identity -p codesigning -v",
 }
 
 func main() {
@@ -61,6 +58,11 @@ func newApp() *cli.App {
 		ipaPath := c.String("ipa")
 		provisionPath := c.String("provision")
 		sign := c.String("sign")
+
+		if len(ipaPath) <= 0 || len(provisionPath) <= 0 || len(sign) <= 0 {
+			cli.ShowAppHelp(c)
+			return
+		}
 
 		err := isFile(ipaPath)
 		perror(err)
