@@ -18,4 +18,3 @@ deploy:
     repo: seiji/recodesign
     all_branches: true
     tags: true
-    condition: "$TRAVIS_GO_VERSION = go1.3"
