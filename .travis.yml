@@ -1,0 +1,16 @@
+language: go
+go:
+  - 1.3
+install:
+  - "go get -d -v ./..."
+  - "go build -v ./..."
+deploy:
+  provider: releases
+  api_key:
+    secure: WwtPTfiJ+5ZTnGFozPfwRiom9wyQgJS7o3oP5/nwa6OpPU+qWhVQKfwKhFW0X0rquC9F3qRqwuS0yeWGnVW19APVmkFdI0c2GX/I4RTZXg4qb66ZNRk5+mLiGO1OPSPuVpBy4402KBiU6hoOKmRmwXqC742V77XGndzS037Bp5E=
+  file: recodesign
+  skip_cleanup: true
+  on:
+    repo: seiji/recodesign
+    all_branches: true
+    tags: true
