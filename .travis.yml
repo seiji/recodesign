@@ -7,7 +7,7 @@ install:
   - go get -d -v ./...
 script:
   - go test ./...
-  - gox -osarch="darwin/amd64" -output="recodesign"
+  - gox -build-toolchain -osarch="darwin/amd64" -output="recodesign"
 deploy:
   provider: releases
   api_key:
